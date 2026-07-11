@@ -1,0 +1,114 @@
+body {
+  color: var(--102418);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  padding: 0px 0px 0px 0px !important;
+  &.hide-scrollbar {
+    margin: 0px 0px 0px 0px !important;
+  }
+  .lock & {
+    overflow: hidden;
+  }
+  .popup-show & {
+    overflow: hidden;
+  }
+  &::before {
+    content: "";
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 97;
+    background: rgba(225, 225, 225, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .menu-open & {
+    overflow: hidden;
+    &::before {
+      content: "";
+      opacity: 1;
+      pointer-events: auto;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+  .filter-open & {
+    overflow: hidden;
+    &::before {
+      content: "";
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 108;
+      @media (max-width: 550px) {
+        display: none;
+      }
+    }
+  }
+  .catalog-open & {
+    @media (max-width: 768px) {
+      overflow: hidden;
+    }
+  }
+}
+
+body.noscroll {
+  overflow: hidden;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+fieldset,
+fieldset legend {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  outline: none;
+  color: currentcolor;
+}
+
+.btn {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--deep-orange-500);
+  border-radius: 50px;
+  padding: 9px 32px;
+  min-height: 72px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+  color: #fff;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: var(--orange-500);
+  }
+  &:active {
+    background-color: var(--light-orange);
+  }
+  &:disabled {
+    pointer-events: none;
+    color: var(--grey-500);
+    background-color: var(--grey-400);
+  }
+}
