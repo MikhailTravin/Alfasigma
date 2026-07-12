@@ -7,14 +7,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   align-items: stretch;
   overflow: hidden;
 }
 
 .main {
-  flex-grow: 1;
-  flex-shrink: 1;
+  //flex-grow: 1;
+  //flex-shrink: 1;
   margin: 100px 0px 0px 0px;
   @media (max-width: 1279px) {
     margin: 82px 0px 0px 0px;
