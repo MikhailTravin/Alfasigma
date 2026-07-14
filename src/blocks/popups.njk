@@ -1,48 +1,143 @@
-<div id="review" aria-hidden="true" class="popup popup-forms">
+<div id="quiz" aria-hidden="true" class="popup">
     <div class="popup__wrapper">
         <div class="popup__content">
+            <form data-dev action="#" class="popup-quiz step1">
+                <div class="popup-quiz__content">
+                    <div class="popup-quiz__titles">
+                        <div class="popup-quiz__title">
+                            Возникали ли у Вас следующие жалобы?
+                        </div>
+                    </div>
+                    <div class="popup-quiz__body">
+                        <div class="popup-quiz__top">
+                            <div class="popup-quiz__text">
+                                Ощущения в ногах
+                            </div>
+                            <div class="popup-quiz__switches">
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Ощущение стеснения в ногах
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Быстрая утомляемость ног
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Ощущение лишней жидкости
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Кожный зуд
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Чувство «беспокойства» в ногах
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Ощущение покалывания
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Чувство жара или жжения в ногах
+                                    </div>
+                                </div>
+                                <div class="popup-quiz__switch">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-switch__background">
+                                            <span class="toggle-switch__handle"></span>
+                                        </span>
+                                    </label>
+                                    <div class="popup-quiz__switch-text">
+                                        Часто ли вы поднимаете тяжести
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup-quiz__bottom">
+                            <button type="submit" class="btn">Далее</button>
+                            <div class="popup-quiz__error">
+                                <svg aria-hidden="true" width="22" height="22">
+                                    <use xlink:href="img/sprite.svg#alert"></use>
+                                </svg>
+                                Выберите хотя бы один вариант
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="popup-quiz step2">
+                <div class="popup-quiz__content">
+                    <div class="popup-quiz__titles">
+                        <div class="popup-quiz__title">
+                            Результат
+                        </div>
+                        <p>
+                            Если вы узнали себя хотя бы в одном из пунктов — стоит проконсультиорваться с врачом и
+                            задуматься о нутрицевтической поддержке здоровья вен.
+                        </p>
+                    </div>
+                    <button type="button" data-close class="btn">Закрыть</button>
+                </div>
+                <div class="popup-quiz__warning">
+                    Результаты теста не являются диагнозом или медицинской рекомендацией и не заменяют
+                    посещение врача.
+                </div>
+            </div>
             <div data-close class="popup__close">
-                <svg aria-hidden="true" width="12" height="12">
+                <svg aria-hidden="true" width="24" height="24">
                     <use xlink:href="img/sprite.svg#close"></use>
                 </svg>
-            </div>
-            <div class="popup-forms__body">
-                <div class="popup-forms__top">
-                    <div class="popup-forms__title">Оставить отзыв</div>
-                </div>
-                <form action="#" class="form">
-                    <div class="form__inputs">
-                        <div class="form__input">
-                            <input data-required autocomplete="off" type="text" name="form[1]" placeholder="Ваше имя"
-                                class="input">
-                        </div>
-                        <div class="form__input">
-                            <input data-required autocomplete="off" type="text" name="form[1]" placeholder="Email"
-                                class="input">
-                        </div>
-                        <div class="form__input">
-                            <textarea data-required placeholder="Ваш отзыв" class="input textarea"
-                                name="form[1]"></textarea>
-                        </div>
-                    </div>
-                    <div class="form__rating">
-                        <span>Поставьте оценку:</span>
-                        <div data-rating="set" data-rating-size="5" data-rating-value="0" class="rating">
-                        </div>
-                    </div>
-                    <div class="form__bottom">
-                        <button type="submit" class="btn">
-                            <span>Отправить</span>
-                            <svg aria-hidden="true" width="21" height="13">
-                                <use xlink:href="img/sprite.svg#arrow1"></use>
-                            </svg>
-                        </button>
-                        <div class="form__text">
-                            Нажимая на кнопку “Отправить” вы соглашаетесь с <a href="./">политикой
-                                конфиденциальности</a>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
