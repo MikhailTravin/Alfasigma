@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Ошибка</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <a href="./" class="header__logo">
+                        <img src="img/icons/logo1.svg" alt="" class="desc">
+                        <img src="img/icons/logo-mob.svg" alt="" class="mob">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+
+            <div class="block-error">
+                <div class="container">
+                    <div class="block-error__content">
+                        <h1 class="block-error__title">404</h1>
+                        <p>
+                            Такой страницы не существует
+                        </p>
+                        <a href="./" class="btn">На главную</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        {% include 'blocks/footer.njk' %}
+    </div>
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

@@ -67,6 +67,10 @@ body::after {
     box-shadow: -4px 4px 16px 0 rgba(139, 139, 139, 0.25);
     background: var(--white);
     padding: 24px 48px;
+    @media (max-width: 759px) {
+        flex-direction: column-reverse;
+        padding: 16px 20px;
+    }
     .lock & {
         visibility: visible;
     }
@@ -81,10 +85,20 @@ body::after {
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s;
+    @media (max-width: 759px) {
+        flex: 0 0 32px;
+        width: 32px;
+        height: 32px;
+        margin-left: auto;
+    }
     svg {
         stroke: var(--deep-orange-500);
         color: var(--deep-orange-500);
         fill: none;
+        @media (max-width: 759px) {
+            width: 18px;
+            height: auto;
+        }
     }
     &:hover {
         opacity: 0.7;
@@ -100,6 +114,9 @@ body::after {
     &.step2 {
         .popup-quiz__content {
             gap: 36px;
+            @media (max-width: 759px) {
+                gap: 16px;
+            }
         }
     }
     // .popup-quiz__content
@@ -122,11 +139,22 @@ body::after {
         display: flex;
         flex-direction: column;
         gap: 24px;
+        @media (max-width: 759px) {
+            gap: 12px;
+        }
         p {
             font-weight: 500;
             font-size: 24px;
             line-height: 133%;
             color: #000;
+            @media (max-width: 2559px) {
+                font-size: 22px;
+                line-height: 145%;
+            }
+            @media (max-width: 1919px) {
+                font-size: 16px;
+                line-height: 150%;
+            }
         }
     }
 
@@ -137,6 +165,14 @@ body::after {
         font-size: 30px;
         line-height: 120%;
         color: #000;
+        @media (max-width: 2559px) {
+            font-size: 28px;
+            line-height: 129%;
+        }
+        @media (max-width: 1919px) {
+            font-size: 20px;
+            line-height: 160%;
+        }
     }
 
     // .popup-quiz__body
@@ -145,6 +181,9 @@ body::after {
         display: flex;
         flex-direction: column;
         gap: 48px;
+        @media (max-width: 759px) {
+            gap: 16px;
+        }
     }
 
     // .popup-quiz__top
@@ -160,7 +199,16 @@ body::after {
     &__text {
         font-weight: 500;
         font-size: 20px;
+        line-height: 120%;
         color: #000;
+        @media (max-width: 2559px) {
+            font-size: 22px;
+            line-height: 145%;
+        }
+        @media (max-width: 1919px) {
+            font-size: 16px;
+            line-height: 150%;
+        }
     }
 
     // .popup-quiz__switches
@@ -186,13 +234,20 @@ body::after {
         font-size: 24px;
         line-height: 133%;
         color: #000;
+        @media (max-width: 2559px) {
+            font-size: 22px;
+            line-height: 145%;
+        }
+        @media (max-width: 1919px) {
+            font-size: 16px;
+            line-height: 150%;
+        }
     }
 
     // .popup-quiz__bottom
 
     &__bottom {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         gap: 18px;
     }
@@ -207,6 +262,15 @@ body::after {
         font-size: 24px;
         line-height: 133%;
         color: #ff2525;
+        @media (max-width: 2559px) {
+            font-size: 22px;
+            line-height: 145%;
+            gap: 10px;
+        }
+        @media (max-width: 1919px) {
+            font-size: 16px;
+            line-height: 150%;
+        }
         svg {
             stroke: #ff2525;
             color: #ff2525;
@@ -223,5 +287,8 @@ body::after {
         line-height: 110%;
         letter-spacing: -0.01em;
         color: var(--grey-500);
+        @media (max-width: 759px) {
+            font-size: 24px;
+        }
     }
 }
