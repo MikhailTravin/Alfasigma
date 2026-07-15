@@ -589,32 +589,66 @@ let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
     }
   }
 
-  if (typeof SmoothScroll !== 'undefined') {
-    let options = {
-      speedAsDuration: true,
-      speed: speed,
-      header: headerItem,
-      offset: offsetTop,
-      easing: 'easeOutQuad',
-    };
-    new SmoothScroll().animateScroll(targetBlockElement, '', options);
+  const getAccuratePosition = () => {
+    const rect = targetBlockElement.getBoundingClientRect();
+    let scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    let position = rect.top + scrollY;
+
+    if (noHeader) {
+      const header = document.querySelector('header.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        position -= headerHeight;
+      }
+    }
+
+    return position - offsetTop;
+  };
+
+  const performScroll = (position) => {
+    if (typeof SmoothScroll !== 'undefined') {
+      let options = {
+        speedAsDuration: true,
+        speed: speed,
+        header: headerItem,
+        offset: offsetTop,
+        easing: 'easeOutQuad',
+      };
+      new SmoothScroll().animateScroll(targetBlockElement, '', options);
+    } else {
+      window.scrollTo({
+        top: position,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  if (document.readyState !== 'complete') {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const position = getAccuratePosition();
+        performScroll(position);
+      }, 100);
+    }, { once: true });
   } else {
-    let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + window.scrollY;
+    setTimeout(() => {
+      const position = getAccuratePosition();
+      performScroll(position);
 
-    if (headerItemHeight) {
-      targetBlockElementPosition -= headerItemHeight;
-    }
-
-    if (offsetTop) {
-      targetBlockElementPosition -= offsetTop;
-    }
-
-    window.scrollTo({
-      top: targetBlockElementPosition,
-      behavior: "smooth"
-    });
+      setTimeout(() => {
+        const newPosition = getAccuratePosition();
+        const currentPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (Math.abs(newPosition - currentPosition) > 50) {
+          window.scrollTo({
+            top: newPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 300);
+    }, 50);
   }
 };
+
 function pageNavigation() {
   document.addEventListener("click", pageNavigationAction);
   document.addEventListener("watcherCallback", pageNavigationAction);
@@ -641,7 +675,13 @@ function pageNavigation() {
             }
           }
         } else {
-          gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+          if (document.readyState !== 'complete') {
+            window.addEventListener('load', () => {
+              gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+            }, { once: true });
+          } else {
+            gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+          }
         }
 
         e.preventDefault();
@@ -685,6 +725,7 @@ function pageNavigation() {
     return links;
   }
 }
+
 pageNavigation();
 
 //========================================================================================================================================================
@@ -1995,12 +2036,12 @@ if (cards) {
 
 //========================================================================================================================================================
 
-  const closeButton = document.querySelector('.block-cookie__close');
-  const cookieBlock = document.querySelector('.block-cookie');
+const closeButton = document.querySelector('.block-cookie__close');
+const cookieBlock = document.querySelector('.block-cookie');
 
-  if (closeButton && cookieBlock) {
-    closeButton.addEventListener('click', function () {
-      cookieBlock.classList.add("hidden")
-      localStorage.setItem('cookieAccepted', 'true');
-    });
-  }
+if (closeButton && cookieBlock) {
+  closeButton.addEventListener('click', function () {
+    cookieBlock.classList.add("hidden")
+    localStorage.setItem('cookieAccepted', 'true');
+  });
+}
