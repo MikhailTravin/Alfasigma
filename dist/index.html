@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="css/swiper.min.css" />
-		<link rel="stylesheet" href="css/fancybox.min.css" />
 		<link rel="stylesheet" href="css/styles.css" />
 
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -27,19 +26,19 @@
 							<div class="header-menu">
 								<ul>
 									<li>
-										<a href="./">О Весвейн</a>
+										<a href="./" data-goto=".block-about" data-goto-header>О Весвейн</a>
 									</li>
 									<li>
-										<a href="./">Кому подходит</a>
+										<a href="./" data-goto=".block-for-whom" data-goto-header>Кому подходит</a>
 									</li>
 									<li>
-										<a href="./">Состав</a>
+										<a href="./" data-goto=".block-compound-spollers" data-goto-header>Состав</a>
 									</li>
 									<li>
-										<a href="./">Отзывы</a>
+										<a href="./" data-goto=".block-reviews" data-goto-header>Отзывы</a>
 									</li>
 									<li>
-										<a href="./">Советы</a>
+										<a href="./" data-goto=".block-advice" data-goto-header>Советы</a>
 									</li>
 								</ul>
 								<a href="./" data-goto=".block-buy" data-goto-header class="btn">Где купить</a>
@@ -73,7 +72,7 @@
 									<p>
 										Идите легко. Мы берём всю тяжесть на себя
 									</p>
-									<a href="./" data-goto=".block-buy" data-goto-header class="btn">Где купить</a>
+									<a href="./" data-goto=".block-buy" data-goto-header class="btn">Где купить?</a>
 								</div>
 								<div class="block-intro__bottom">
 									<img src="img/flag.webp" alt="">
@@ -209,6 +208,107 @@
 					</div>
 				</div>
 
+				<div class="block-about">
+					<div class="container">
+						<div class="block-about__content">
+							<div class="block-about__top">
+								<div class="block-about__titles">
+									<h2 class="title2">
+										Как работает Весвейн Форте?
+									</h2>
+									<p class="p-small">
+										Весвейн действует изнутри, помогая уменьшить
+										ощущение тяжести и отечности в ногах
+									</p>
+								</div>
+								<img loading="lazy" src="img/logo3.webp" alt="">
+							</div>
+							<div class="block-about__center">
+								<img loading="lazy" src="img/image14.webp" alt="" class="block-about__pic1">
+								<ul>
+									<li class="block-about__item item1">
+										Нутрицевтическая<br> поддержка здоровья вен
+									</li>
+									<li class="block-about__item item2">
+										Поддерживает ваши вены<br>
+										до развития симптомов
+									</li>
+									<li class="block-about__item item3">
+										Комплексное действие
+									</li>
+								</ul>
+							</div>
+							<div class="block-about__bottom">
+								<p class="p-small">
+									Чтобы уменьшить тяжесть, дискомфорт
+									и отечность, важно восстановить циркуляцию крови, предотвратить застой жидкости
+									и нормализовать функционирование вен.
+								</p>
+							</div>
+						</div>
+					</div>
+					<img loading="lazy" src="img/bg3.webp" alt="" class="block-about__bg1">
+				</div>
+
+				<div class="block-buy">
+					<div class="container">
+						<div class="block-buy__top">
+							<div class="heading-complex">
+								<h2 class="title2">
+									Где купить
+								</h2>
+								<p>
+									Весвейн с прямой поставкой из Италии можно найти в аптеках Москвы и других городах РФ.
+									Также можно заказать продукт в онлайн-аптеках
+									с доставкой до аптечного пункта или до дома.
+								</p>
+							</div>
+							<div class="block-buy__image">
+								<img loading="lazy" src="img/image13.webp" alt="">
+							</div>
+						</div>
+						<div class="block-buy__body">
+							<div class="block-buy__slider swiper">
+								<div class="block-buy__wrapper swiper-wrapper">
+									<div class="block-buy__slide swiper-slide">
+										<a href="./" target="_blank" class="block-buy__column">
+											<div class="block-buy__pic1">
+												<img loading="lazy" src="img/icons/logo-ozon.svg" alt="" class="img1">
+											</div>
+											<div class="btn">Купить на OZON</div>
+										</a>
+									</div>
+									<div class="block-buy__slide swiper-slide">
+										<a href="./" target="_blank" class="block-buy__column">
+											<div class="block-buy__pic1">
+												<img loading="lazy" src="img/logo1.webp" alt="">
+											</div>
+											<div class="btn">Купить на Здравсити</div>
+										</a>
+									</div>
+									<div class="block-buy__slide swiper-slide">
+										<a href="./" target="_blank" class="block-buy__column">
+											<div class="block-buy__pic1">
+												<img loading="lazy" src="img/logo2.webp" alt="" class="img2">
+											</div>
+											<div class="btn">Купить на Apteka.ru</div>
+										</a>
+									</div>
+									<div class="block-buy__slide swiper-slide">
+										<a href="./" target="_blank" class="block-buy__column">
+											<div class="block-buy__pic1">
+												<img loading="lazy" src="img/icons/logo-polza.svg" alt="" class="img2">
+											</div>
+											<div class="btn">Купить на Польза.ру</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="block-buy__pagination pagination"></div>
+						</div>
+					</div>
+				</div>
+
 				<div class="block-for-whom block1">
 					<div class="container">
 						<div class="block-for-whom__content">
@@ -227,12 +327,12 @@
 									<img loading="lazy" src="img/image12.webp" alt="">
 								</div>
 								<ul>
-									<li>
+									<li class="block-for-whom__item item1">
 										<p>
 											Возраст<span>2</span>
 										</p>
 									</li>
-									<li>
+									<li class="block-for-whom__item item2">
 										<p>
 											Профессиии
 											с длительным пребыванием
@@ -243,12 +343,12 @@
 											банковские сотрудники
 										</p>
 									</li>
-									<li>
+									<li class="block-for-whom__item item3">
 										<p>
 											Лишний вес<span>2</span>
 										</p>
 									</li>
-									<li>
+									<li class="block-for-whom__item item4">
 										<p>
 											Длительный перелет
 										</p>
@@ -328,7 +428,7 @@
 						</div>
 					</div>
 					<div class="block-compound-spollers">
-						<div data-spollers data-one-spoller class="block-compound-spollers__slider">
+						<div data-spollers="1280,min" data-one-spoller class="block-compound-spollers__slider">
 							<div style="background: #ffe3b0;" class="block-compound-spollers__slide slide1">
 								<div class="block-compound-spollers__image">
 									<img loading="lazy" src="img/image6.webp" alt="">
@@ -458,7 +558,7 @@
 					</div>
 				</div>
 
-				<div class="block-banner">
+				<div class="block-banner banner2">
 					<div class="container">
 						<p>
 							Двухслойная система — ключевая особенность Весвейна:
@@ -1002,8 +1102,147 @@
 					</div>
 				</div>
 
-			</main>
+				<div class="block-cookie">
+					<p>
+						Продолжая использовать сайт, вы соглашаетесь на сбор файлов Cookie.<br> <a href="./">Подробнее</a>
+					</p>
+					<div class="block-cookie__buttons">
+						<button type="button" class="block-cookie__close">
+							<svg aria-hidden="true" width="14" height="14">
+								<use xlink:href="img/sprite.svg#close"></use>
+							</svg>
+						</button>
+						<button type="button" class="btn">Принять</button>
+					</div>
+				</div>
 
+			</main>
+			<footer class="footer">
+				<div class="footer-top">
+					<div class="container">
+						<a href="./" class="footer-top__logo">
+							<img loading="lazy" src="img/icons/logo2.svg" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="footer-contents">
+					<div class="container">
+						<div class="footer-center">
+							<div class="footer-center__content">
+								<div class="footer-center__descr">
+									<p>
+										Альфасигма — одна из 5 ведущих фармацевтических компаний Италии, основанная в 1948 году
+										Марино
+										Голинелли в Болонье. Компания является признанным экспертом в области сердечно-сосудистых
+										заболеваний
+										и занимает лидирующие позиции в России по инновационности препаратов
+										и качеству доказательной базы. Сегодня Альфасигма — международная фармацевтическая
+										организация с
+										24 филиалами, присутствующая более чем
+										в 100 странах мира. В компании работает около 4000 сотрудников. В России компанию
+										представляет
+										подразделение «Альфасигма Рус».
+									</p>
+									<div class="footer-center__text">
+										СГР АМ.01.20.01.003.R.000206.03.25 от 27.03.2025
+									</div>
+									<ul>
+										<li>
+											<a href="./">Политика конфиденциальности</a>
+										</li>
+										<li>
+											<a href="./">О Cookie</a>
+										</li>
+									</ul>
+								</div>
+								<div class="footer-center__right">
+									<div class="footer-center__menu">
+										<div class="footer-center__title">
+											Разделы
+										</div>
+										<ul>
+											<li>
+												<a href="./">О весвейн</a>
+											</li>
+											<li>
+												<a href="./">Кому подходит</a>
+											</li>
+											<li>
+												<a href="./">Состав</a>
+											</li>
+											<li>
+												<a href="./">Отзывы</a>
+											</li>
+											<li>
+												<a href="./">Советы</a>
+											</li>
+										</ul>
+									</div>
+									<div class="footer-center__contacts">
+										<div class="footer-center__title">
+											Контакты
+										</div>
+										<ul>
+											<li>
+												<p>
+													ООО «Альфасигма Рус», 115054, г. Москва, пл. Павелецкая, д.2, стр.2
+												</p>
+											</li>
+											<li>
+												<p>
+													Тел.: <a href="tel:74951500123">+7 (495) 150-01-23</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													e-mail:<a href="mailto:info.ru@alfasigma.com">info.ru@alfasigma.com</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													Официальный сайт компании: <a href="ru.alfasigma.com">ru.alfasigma.com</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													Альфасигма в соцсетях:
+												</p>
+												<div class="socials">
+													<a href="./">
+														<img loading="lazy" src="img/icons/tg.svg" alt="">
+													</a>
+													<a href="./">
+														<img loading="lazy" src="img/icons/vk.svg" alt="">
+													</a>
+												</div>
+											</li>
+										</ul>
+										<div class="footer-center__descr">
+											<div class="footer-center__text">
+												СГР АМ.01.20.01.003.R.000206.03.25 от 27.03.2025
+											</div>
+											<ul>
+												<li>
+													<a href="./">Политика конфиденциальности</a>
+												</li>
+												<li>
+													<a href="./">О Cookie</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="footer-bottom">
+							<img loading="lazy" src="img/icons/logo3.svg" alt="" class="footer-bottom__pic1">
+							<div class="footer-bottom__copy">
+								Все права защищены - © 2025 ООО "Альфасигма Рус"
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
 		<div id="quiz" aria-hidden="true" class="popup">
 			<div class="popup__wrapper">
@@ -1150,8 +1389,6 @@
 			</div>
 		</div>
 		<script src="js/swiper-10.2.0.min.js"></script>
-		<script src="js/fancybox.umd.js"></script>
-		<script src="js/dynamic_adapt.js"></script>
 		<script src="js/scripts.js"></script>
 	</body>
 
