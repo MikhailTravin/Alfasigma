@@ -1570,6 +1570,9 @@ a {
 }
 .block-advice__wrapper {
   gap: 200px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media (max-width: 2559px) {
   .block-advice__wrapper {

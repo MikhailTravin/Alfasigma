@@ -382,6 +382,7 @@
 
     &__wrapper {
         gap: 200px;
+        align-items: center;
         @media (max-width: 2559px) {
             gap: 160px;
         }
