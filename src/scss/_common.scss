@@ -4,6 +4,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
+  background: #ffffff;
   padding: 0px 0px 0px 0px !important;
   &.hide-scrollbar {
     margin: 0px 0px 0px 0px !important;
@@ -203,7 +204,9 @@ a {
       font-size: 20px;
       line-height: 160%;
     }
-    span {
+    span,
+    a {
+      cursor: pointer;
       position: relative;
       top: -10px;
       font-size: 16px;

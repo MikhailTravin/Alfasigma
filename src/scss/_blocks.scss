@@ -38,31 +38,28 @@
     &__pic1 {
         position: absolute;
         right: 0;
-        bottom: 185px;
+        bottom: 0px;
         width: auto;
         z-index: 1;
         max-height: 1077px;
         @media (max-width: 2559px) {
             right: -4.5%;
-            bottom: 85px;
             max-height: 868px;
         }
         @media (max-width: 1919px) {
             max-height: 584px;
-            bottom: 70px;
             right: -9%;
         }
         @media (max-width: 1279px) {
             max-height: 562px;
             right: -200px;
-            bottom: 85px;
         }
         @media (max-width: 759px) {
             max-height: 389px;
             right: auto;
             left: 41%;
             z-index: 4;
-            bottom: 127px;
+            bottom: 37px;
             transform: translate(-50%, 0px);
         }
     }
@@ -196,40 +193,6 @@
         }
     }
 
-    // .block-intro__text
-
-    &__text {
-        position: relative;
-        z-index: 6;
-        backdrop-filter: blur(12px);
-        background: rgba(255, 255, 255, 0.75);
-        font-family: var(--third-family);
-        font-weight: 200;
-        font-size: 73px;
-        line-height: 110%;
-        letter-spacing: 0.02em;
-        text-align: center;
-        text-transform: uppercase;
-        color: var(--deep-blue-500);
-        padding: 62px 44px;
-        width: 100%;
-        @media (max-width: 2559px) {
-            font-size: 41px;
-            padding: 27px 44px;
-        }
-        @media (max-width: 1919px) {
-            font-weight: 300;
-            font-size: 26px;
-            padding: 30px 44px;
-        }
-        @media (max-width: 1279px) {
-            padding: 30px 20px;
-        }
-        @media (max-width: 759px) {
-            padding: 16px;
-        }
-    }
-
     // .block-intro__benefits
 
     &__benefits {
@@ -356,6 +319,43 @@
             font-size: 22px;
             line-height: 145%;
         }
+    }
+}
+
+//========================================================================================================================================================
+
+.block-disclamer {
+    position: fixed;
+    z-index: 6;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.75);
+    font-family: var(--third-family);
+    font-weight: 200;
+    font-size: 73px;
+    line-height: 110%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--deep-blue-500);
+    padding: 62px 44px;
+    min-height: 10vh;
+    @media (max-width: 2559px) {
+        font-size: 41px;
+        padding: 27px 44px;
+    }
+    @media (max-width: 1919px) {
+        font-weight: 300;
+        font-size: 26px;
+        padding: 30px 44px;
+    }
+    @media (max-width: 1279px) {
+        padding: 30px 20px;
+    }
+    @media (max-width: 759px) {
+        padding: 16px;
     }
 }
 
@@ -599,8 +599,15 @@
     &__more {
         flex: 0 0 auto;
         position: relative;
-        &.active,
-        &:hover {
+        @media (hover: hover) {
+            &:hover {
+                .block-symptoms__dropdown {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+        }
+        &.active {
             .block-symptoms__dropdown {
                 opacity: 1;
                 pointer-events: auto;
@@ -679,6 +686,9 @@
             left: 50%;
             transform: translate(-50%, 0px);
         }
+        @media (max-width: 400px) {
+            width: calc(100vw - 32px);
+        }
         &::after {
             content: "";
             position: absolute;
@@ -714,7 +724,8 @@
                 font-size: 16px;
                 line-height: 150%;
             }
-            span {
+            span,
+            a {
                 position: relative;
                 top: -10px;
                 font-size: 16px;
@@ -1526,7 +1537,8 @@
                     font-size: 20px;
                     line-height: 160%;
                 }
-                span {
+                span,
+                a {
                     top: -15px;
                     font-size: 24px;
                     @media (max-width: 2559px) {
@@ -1604,6 +1616,11 @@
         width: 100%;
         max-width: 445px;
         position: absolute;
+        opacity: 0;
+        transition: opacity 0.5s;
+        &._watcher-view {
+            opacity: 1;
+        }
         @media (max-width: 2559px) {
             max-width: 415px;
         }
@@ -1970,6 +1987,9 @@
     display: flex;
     flex-direction: column;
     margin: -123px 0px 0px 0px;
+    @media (max-width: 1279px) {
+        margin: -30px 0px 0px 0px;
+    }
 
     // .block-compound-spollers__slider
 
@@ -1981,6 +2001,7 @@
         padding: 123px 0px 0px 0px;
         @media (max-width: 1279px) {
             overflow: visible;
+            padding: 30px 0px 0px 0px;
         }
     }
 
@@ -2111,6 +2132,7 @@
     // .block-compound-spollers__image
 
     &__image {
+        pointer-events: none;
         position: relative;
         display: flex;
         justify-content: flex-end;
@@ -2288,6 +2310,11 @@
         justify-content: center;
         gap: 44px;
         align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s;
+        &._watcher-view {
+            opacity: 1;
+        }
         @media (max-width: 1919px) {
             gap: 40px;
         }
@@ -2314,7 +2341,8 @@
                 font-size: 16px;
                 line-height: 150%;
             }
-            span {
+            span,
+            a {
                 position: relative;
                 top: -10px;
                 font-size: 16px;
@@ -2718,6 +2746,9 @@
     // .block-buy__slider
 
     &__slider {
+        @media (hover: hover) {
+            margin: -6px 0px 0px 0px;
+        }
         @media (max-width: 759px) {
             overflow: visible;
         }
@@ -2745,6 +2776,9 @@
         display: flex;
         flex-direction: column;
         height: auto;
+        @media (hover: hover) {
+            margin: 6px 0px 0px 0px;
+        }
         @media (max-width: 1919px) {
             flex: 0 0 auto;
             width: auto !important;
@@ -2883,6 +2917,13 @@
         font-size: 20px;
         line-height: 160%;
         color: var(--white);
+        a {
+            text-decoration: underline;
+            transition: opacity 0.3s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
         @media (max-width: 1279px) {
             font-size: 16px;
             line-height: 150%;
@@ -3151,6 +3192,11 @@
         border-radius: 60px;
         max-width: fit-content;
         padding: 28px 40px;
+        opacity: 0;
+        transition: opacity 0.5s;
+        &._watcher-view {
+            opacity: 1;
+        }
         @media (max-width: 2559px) {
             font-size: 24px;
             line-height: 133%;

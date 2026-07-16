@@ -648,8 +648,8 @@ let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
     }, 50);
   }
 };
-
 function pageNavigation() {
+  console.log('🟢 pageNavigation инициализирован');
   document.addEventListener("click", pageNavigationAction);
   document.addEventListener("watcherCallback", pageNavigationAction);
 
@@ -659,32 +659,54 @@ function pageNavigation() {
       const gotoLink = targetElement.closest('[data-goto]');
 
       if (gotoLink) {
+        e.preventDefault();
+
         const gotoLinkSelector = gotoLink.dataset.goto || '';
+        // ВАЖНО: data-goto-header означает, что НЕ нужно учитывать шапку
         const noHeader = gotoLink.hasAttribute('data-goto-header');
         const gotoSpeed = gotoLink.dataset.gotoSpeed ? parseInt(gotoLink.dataset.gotoSpeed) : 500;
         const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
 
-        if (window.modules_flsModules && modules_flsModules.fullpage) {
-          const fullpageSection = document.querySelector(`${gotoLinkSelector}`)?.closest('[data-fp-section]');
-          const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.fpId : null;
+        console.log('📋 Параметры:');
+        console.log('  - selector:', gotoLinkSelector);
+        console.log('  - noHeader (не учитывать шапку):', noHeader);
+        console.log('  - offsetTop:', offsetTop);
 
-          if (fullpageSectionId !== null) {
-            modules_flsModules.fullpage.switchingSection(fullpageSectionId);
-            if (document.documentElement.classList.contains("menu-open") && typeof menuClose === 'function') {
-              menuClose();
-            }
-          }
-        } else {
-          if (document.readyState !== 'complete') {
-            window.addEventListener('load', () => {
-              gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
-            }, { once: true });
+        const isInHeader = !!gotoLink.closest('header');
+        const isInFooter = !!gotoLink.closest('footer');
+
+        const targetElements = document.querySelectorAll(gotoLinkSelector);
+        let targetElementToScroll = null;
+
+        if (targetElements.length > 0) {
+          if (isInHeader) {
+            targetElementToScroll = targetElements[0];
+          } else if (isInFooter) {
+            targetElementToScroll = targetElements[targetElements.length - 1];
           } else {
-            gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+            targetElementToScroll = targetElements[0];
           }
         }
 
-        e.preventDefault();
+        if (targetElementToScroll) {
+          console.log('🎯 Целевой элемент:', targetElementToScroll);
+
+          if (window.modules_flsModules && modules_flsModules.fullpage) {
+            const fullpageSection = targetElementToScroll.closest('[data-fp-section]');
+            const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.fpId : null;
+
+            if (fullpageSectionId !== null) {
+              modules_flsModules.fullpage.switchingSection(fullpageSectionId);
+              if (document.documentElement.classList.contains("menu-open") && typeof menuClose === 'function') {
+                menuClose();
+              }
+            }
+          } else {
+            // Используем исправленную функцию скролла
+            console.log('🔄 Используем исправленный скролл');
+            scrollToElementFixed(targetElementToScroll, noHeader, gotoSpeed, offsetTop);
+          }
+        }
       }
     } else if (e.type === "watcherCallback" && e.detail) {
       const entry = e.detail.entry;
@@ -705,6 +727,58 @@ function pageNavigation() {
         });
       }
     }
+  }
+
+  // ИСПРАВЛЕННАЯ ФУНКЦИЯ СКРОЛЛА
+  function scrollToElementFixed(element, noHeader, speed, offset) {
+    console.log('📜 scrollToElementFixed вызван');
+    console.log('  - element:', element);
+    console.log('  - noHeader (не учитывать шапку):', noHeader);
+    console.log('  - speed:', speed);
+    console.log('  - offset:', offset);
+
+    if (!element) {
+      console.log('❌ Элемент не передан');
+      return;
+    }
+
+    // Получаем высоту шапки
+    let headerHeight = 0;
+    // Если noHeader = false (т.е. нужно учитывать шапку)
+    if (!noHeader) {
+      const header = document.querySelector('header.header') || document.querySelector('header');
+      if (header) {
+        headerHeight = header.offsetHeight;
+        console.log('  - Высота шапки (учитываем):', headerHeight);
+      }
+    } else {
+      console.log('  - Шапка НЕ учитывается (data-goto-header)');
+    }
+
+    // Получаем позицию элемента
+    const rect = element.getBoundingClientRect();
+    console.log('  - getBoundingClientRect():', rect);
+
+    // Рассчитываем позицию для скролла
+    const elementTop = rect.top + window.pageYOffset;
+    // totalOffset = offset + headerHeight (если нужно учитывать шапку)
+    const totalOffset = offset + headerHeight;
+    const targetPosition = elementTop - totalOffset;
+
+    console.log('  - elementTop (относительно документа):', elementTop);
+    console.log('  - offset:', offset);
+    console.log('  - headerHeight:', headerHeight);
+    console.log('  - totalOffset:', totalOffset);
+    console.log('  - targetPosition:', targetPosition);
+    console.log('  - current scrollY:', window.pageYOffset);
+
+    // Скроллим
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+
+    console.log('✅ Скролл выполнен к:', targetPosition);
   }
 
   function findNavigatorLinks(element) {
@@ -736,12 +810,28 @@ if (buttons) {
   buttons.forEach(button => {
     button.addEventListener('click', function (e) {
       if (window.innerWidth <= 992) {
+        e.stopPropagation();
         const parent = this.closest('.block-symptoms__more');
         if (parent) {
           parent.classList.toggle('active');
         }
       }
     });
+  });
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth <= 992) {
+      const target = e.target.closest('.block-symptoms__more');
+
+      if (!target) {
+        const allBlocks = document.querySelectorAll('.block-symptoms__more.active');
+        allBlocks.forEach(block => {
+          const button = block.querySelector('.block-symptoms__more-button');
+          if (button && !button.contains(e.target)) {
+            block.classList.remove('active');
+          }
+        });
+      }
+    }
   });
 }
 
@@ -2037,11 +2127,22 @@ if (cards) {
 //========================================================================================================================================================
 
 const closeButton = document.querySelector('.block-cookie__close');
+const acceptButton = document.querySelector('.block-cookie .btn');
 const cookieBlock = document.querySelector('.block-cookie');
 
+function hideCookieBlock() {
+  cookieBlock.classList.add("hidden");
+  localStorage.setItem('cookieAccepted', 'true');
+}
+
+if (localStorage.getItem('cookieAccepted') === 'true') {
+  cookieBlock.classList.add("hidden");
+}
+
 if (closeButton && cookieBlock) {
-  closeButton.addEventListener('click', function () {
-    cookieBlock.classList.add("hidden")
-    localStorage.setItem('cookieAccepted', 'true');
-  });
+  closeButton.addEventListener('click', hideCookieBlock);
+}
+
+if (acceptButton && cookieBlock) {
+  acceptButton.addEventListener('click', hideCookieBlock);
 }
