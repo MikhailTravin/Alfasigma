@@ -7,14 +7,46 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  //justify-content: center;
+  justify-content: center;
   align-items: stretch;
   overflow: hidden;
+  &::before {
+    content: "";
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 97;
+    background: rgba(16, 36, 24, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+  .popup-show & {
+    &::before {
+      content: "";
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 149;
+    }
+  }
+  .menu-open & {
+    &::before {
+      content: "";
+      opacity: 1;
+      pointer-events: auto;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
 }
 
 .main {
-  //flex-grow: 1;
-  //flex-shrink: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
   margin: 100px 0px 0px 0px;
   @media (max-width: 1279px) {
     margin: 82px 0px 0px 0px;

@@ -1,11 +1,10 @@
 body {
-  color: var(--102418);
+  color: #000000;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  background: #ffffff;
-  padding: 0px 0px 0px 0px !important;
+  padding: 0px 0px 0px 0px;
   &.hide-scrollbar {
     margin: 0px 0px 0px 0px !important;
   }
@@ -15,52 +14,18 @@ body {
   .popup-show & {
     overflow: hidden;
   }
-  &::before {
-    content: "";
-    cursor: pointer;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 97;
-    background: rgba(225, 225, 225, 0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
   .menu-open & {
     overflow: hidden;
-    &::before {
-      content: "";
-      opacity: 1;
-      pointer-events: auto;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-  }
-  .filter-open & {
-    overflow: hidden;
-    &::before {
-      content: "";
-      opacity: 1;
-      pointer-events: auto;
-      z-index: 108;
-      @media (max-width: 550px) {
-        display: none;
-      }
-    }
-  }
-  .catalog-open & {
-    @media (max-width: 768px) {
-      overflow: hidden;
-    }
   }
 }
 
 body.noscroll {
   overflow: hidden;
+}
+
+html,
+body {
+  background: #fff;
 }
 
 input,

@@ -2146,3 +2146,41 @@ if (closeButton && cookieBlock) {
 if (acceptButton && cookieBlock) {
   acceptButton.addEventListener('click', hideCookieBlock);
 }
+
+//========================================================================================================================================================
+
+function updateMainWrapperPadding() {
+  const disclamer = document.querySelector('.block-disclamer');
+  const mainWrapper = document.querySelector('.main-wrapper-outer');
+
+  if (!disclamer || !mainWrapper) return;
+
+  const disclamerHeight = disclamer.offsetHeight;
+
+  mainWrapper.style.paddingBottom = disclamerHeight + 'px';
+}
+
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+document.addEventListener('DOMContentLoaded', updateMainWrapperPadding);
+
+const debouncedUpdate = debounce(updateMainWrapperPadding, 100);
+window.addEventListener('resize', debouncedUpdate);
+
+if (window.ResizeObserver) {
+  const resizeObserver = new ResizeObserver(debouncedUpdate);
+  const disclamer = document.querySelector('.block-disclamer');
+  if (disclamer) {
+    resizeObserver.observe(disclamer);
+  }
+}
