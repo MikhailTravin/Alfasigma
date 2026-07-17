@@ -147,7 +147,6 @@ a {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -161,11 +160,7 @@ a {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-}
-@media (max-width: 992px) {
-  .main-wrapper-outer {
-    overflow: hidden;
-  }
+  overflow: hidden;
 }
 
 .main {
@@ -174,13 +169,49 @@ a {
           flex-grow: 1;
   -ms-flex-negative: 1;
       flex-shrink: 1;
+  margin: 100px 0px 0px 0px;
+}
+@media (max-width: 1279px) {
+  .main {
+    margin: 82px 0px 0px 0px;
+  }
+}
+@media (max-width: 992px) {
+  .main {
+    margin: 64px 0px 0px 0px;
+  }
 }
 
 .container {
   margin: 0 auto;
   width: 100%;
   max-width: var(--container-width);
-  padding: 0px 19px;
+  padding: 0px 16px;
+}
+@media (min-width: 2560px) {
+  .container {
+    max-width: 2082px;
+  }
+}
+@media (max-width: 2559px) and (min-width: 1920px) {
+  .container {
+    max-width: 1732px;
+  }
+}
+@media (max-width: 1919px) and (min-width: 1280px) {
+  .container {
+    max-width: 1234px;
+  }
+}
+@media (max-width: 1279px) and (min-width: 760px) {
+  .container {
+    max-width: 760px;
+  }
+}
+@media (max-width: 759px) {
+  .container {
+    max-width: 100%;
+  }
 }
 
 .checkbox {
@@ -652,12 +683,15 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  padding: 0px 0px 0px 0px !important;
+  padding: 0px 0px 0px 0px;
 }
 body.hide-scrollbar {
   margin: 0px 0px 0px 0px !important;
 }
 .lock body {
+  overflow: hidden;
+}
+.popup-show body {
   overflow: hidden;
 }
 body::before {
@@ -691,6 +725,11 @@ body::before {
 
 body.noscroll {
   overflow: hidden;
+}
+
+html,
+body {
+  background: #fff;
 }
 
 input,
