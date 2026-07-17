@@ -683,8 +683,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  background-color: #ffffff !important;
-  padding: 0px 0px 0px 0px !important;
+  padding: 0px 0px 0px 0px;
 }
 body.hide-scrollbar {
   margin: 0px 0px 0px 0px !important;
@@ -724,12 +723,13 @@ body::before {
   }
 }
 
-html {
-  background-color: white;
-}
-
 body.noscroll {
   overflow: hidden;
+}
+
+html,
+body {
+  background: #fff;
 }
 
 input,
@@ -5563,8 +5563,17 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff !important;
-  z-index: 101;
+  background-color: #ffffff;
+  z-index: 50;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * env(safe-area-inset-top));
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background: #fff;
 }
 .header .container {
   max-width: 2560px;
