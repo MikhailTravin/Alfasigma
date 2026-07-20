@@ -1078,10 +1078,13 @@ a {
   background-color: #a7a7a7;
   margin: 0px !important;
   opacity: 1 !important;
-  -webkit-transition: max-width 0.3s;
-  transition: max-width 0.3s;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 0;
 }
 .pagination .pagination__dot::before {
   content: "";
@@ -1092,17 +1095,13 @@ a {
   width: 0%;
   background: #000;
   height: 100%;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
+  -webkit-transition: width 0.1s linear;
+  transition: width 0.1s linear;
   border-radius: 8px 0px 0px 8px;
 }
 .pagination .pagination__dot._active {
   border-radius: 8px;
   width: 62px;
-}
-.pagination .pagination__dot._active::before {
-  content: "";
-  width: 50%;
 }
 
 .swiper-pagination-lock {
@@ -4692,6 +4691,12 @@ a {
     overflow: visible;
   }
 }
+@media (max-width: 2559px) and (min-width: 1920px) {
+  .block-buy__slider {
+    margin: 0px -24px;
+    width: calc(100% + 48px);
+  }
+}
 @media (min-width: 1920px) {
   .block-buy__wrapper {
     display: -webkit-box;
@@ -4703,12 +4708,6 @@ a {
         -ms-flex-pack: center;
             justify-content: center;
     gap: 24px;
-  }
-}
-@media (max-width: 2559px) and (min-width: 1920px) {
-  .block-buy__wrapper {
-    margin: 0px -24px;
-    width: calc(100% + 48px);
   }
 }
 .block-buy__slide {
@@ -5597,7 +5596,36 @@ a {
 }
 @media (max-width: 1279px) {
   .header__content {
-    padding: 14px 0px;
+    padding: 8px 0px;
+  }
+}
+.header__content .btn-mob {
+  display: none;
+}
+@media (max-width: 1279px) {
+  .header__content .btn-mob {
+    margin-left: auto;
+    opacity: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+  .header__content .btn-mob.active {
+    opacity: 1;
+  }
+}
+@media (max-width: 992px) {
+  .header__content .btn-mob {
+    min-height: 48px;
+    font-size: 20px;
+    padding: 5px 24px;
+  }
+}
+@media (max-width: 768px) {
+  .header__content .btn-mob {
+    margin-left: 4px;
   }
 }
 .header__logo {
@@ -5631,6 +5659,13 @@ a {
 @media (max-width: 992px) {
   .header__logo img.mob {
     display: block;
+  }
+}
+@media (max-width: 992px) {
+  .header__body .btn {
+    min-height: 48px;
+    font-size: 20px;
+    padding: 5px 24px;
   }
 }
 .header__burger {
