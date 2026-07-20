@@ -5615,6 +5615,9 @@ a {
   .header__content .btn-mob.active {
     opacity: 1;
   }
+  .menu-open .header__content .btn-mob {
+    opacity: 0;
+  }
 }
 @media (max-width: 992px) {
   .header__content .btn-mob {
