@@ -2752,6 +2752,10 @@
         @media (max-width: 759px) {
             overflow: visible;
         }
+        @media (max-width: 2559px) and (min-width: 1920px) {
+            margin: 0px -24px;
+            width: calc(100% + 48px);
+        }
     }
 
     // .block-buy__wrapper
@@ -2762,10 +2766,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 24px;
-        }
-        @media (max-width: 2559px) and (min-width: 1920px) {
-            margin: 0px -24px;
-            width: calc(100% + 48px);
         }
     }
 

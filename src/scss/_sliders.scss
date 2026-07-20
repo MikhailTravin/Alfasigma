@@ -22,9 +22,12 @@
         background-color: #a7a7a7;
         margin: 0px !important;
         opacity: 1 !important;
-        transition: max-width 0.3s;
+        transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        cursor: pointer;
+        border: none;
+        padding: 0;
         &::before {
             content: "";
             display: block;
@@ -34,16 +37,12 @@
             width: 0%;
             background: #000;
             height: 100%;
-            transition: width 0.3s ease;
+            transition: width 0.1s linear;
             border-radius: 8px 0px 0px 8px;
         }
         &._active {
             border-radius: 8px;
             width: 62px;
-            &::before {
-                content: "";
-                width: 50%;
-            }
         }
     }
 }
